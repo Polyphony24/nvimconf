@@ -1,6 +1,7 @@
 return {
 	'neoclide/coc.nvim',
 	branch = 'release',
+	lazy = false,
 	config = function()
 		--format
 		vim.keymap.set('n', '<leader>F',
