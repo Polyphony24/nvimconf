@@ -1,7 +1,7 @@
 local g = vim.g
 local o = vim.o local opt = vim.opt
 local map = vim.keymap.set
-opts = { silent = true }
+local opts = { silent = true }
 
 
 o.number = true

@@ -9,7 +9,7 @@ return {
 		'williamboman/mason-lspconfig.nvim',
 		config = function()
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'lua_ls', 'clangd', 'jdtls', 'pylsp', 'rust_analyzer', 'taplo' }
+				ensure_installed = { 'lua_ls', 'clangd', 'jdtls', 'pylsp', 'rust_analyzer', 'taplo', 'gopls' }
 				-- java_language_server/jdtls
 				-- jedi_language_server/pyre/pyright/pylyzer/sourcery/pylsp/ruff_lsp
 			})
@@ -30,6 +30,7 @@ return {
 			lspconfig.pylsp.setup {}
 			lspconfig.rust_analyzer.setup {}
 			lspconfig.taplo.setup {}
+			lspconfig.gopls.setup {}
 
 			vim.api.nvim_create_autocmd('LspAttach', {
 				group = vim.api.nvim_create_augroup('UserLspConfig', {}),
