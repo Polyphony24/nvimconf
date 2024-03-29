@@ -9,9 +9,7 @@ return {
 		'williamboman/mason-lspconfig.nvim',
 		config = function()
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'lua_ls', 'clangd', 'jdtls', 'pylsp', 'rust_analyzer', 'taplo', 'gopls' }
-				-- java_language_server/jdtls
-				-- jedi_language_server/pyre/pyright/pylyzer/sourcery/pylsp/ruff_lsp
+				ensure_installed = { 'lua_ls', 'clangd', 'jdtls', 'ruff', 'pyright', 'rust_analyzer', 'taplo', 'gopls' }
 			})
 		end
 	},
@@ -21,13 +19,12 @@ return {
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 			local lspconfig = require('lspconfig')
-			lspconfig.lua_ls.setup {
-				capabilities = capabilities
-			}
+			lspconfig.lua_ls.setup { capabilities = capabilities }
+			--lspconfig.pylsp.setup { capabilities = capabilities }
+			lspconfig.pyright.setup { capabilities = capabilities }
+			lspconfig.ruff.setup { capabilities = capabilities }
 			lspconfig.clangd.setup {}
 			lspconfig.jdtls.setup {}
-			lspconfig.bashls.setup {}
-			lspconfig.pylsp.setup {}
 			lspconfig.rust_analyzer.setup {}
 			lspconfig.taplo.setup {}
 			lspconfig.gopls.setup {}
@@ -37,7 +34,6 @@ return {
 				callback = function(ev)
 					-- Enable completion triggered by <c-x><c-o>
 					vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
 					local opts = { buffer = ev.buf }
 					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
