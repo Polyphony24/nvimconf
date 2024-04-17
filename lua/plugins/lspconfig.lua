@@ -9,7 +9,7 @@ return {
 		'williamboman/mason-lspconfig.nvim',
 		config = function()
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'lua_ls', 'clangd', 'jdtls', 'ruff', 'pyright', 'rust_analyzer', 'taplo', 'gopls' }
+				ensure_installed = { 'lua_ls', 'clangd', 'jdtls', 'ruff_lsp', 'pyright', 'rust_analyzer', 'taplo', 'gopls' }
 			})
 		end
 	},
@@ -22,7 +22,10 @@ return {
 			lspconfig.lua_ls.setup { capabilities = capabilities }
 			--lspconfig.pylsp.setup { capabilities = capabilities }
 			lspconfig.pyright.setup { capabilities = capabilities }
-			lspconfig.ruff.setup { capabilities = capabilities }
+			lspconfig.ruff.setup {
+				capabilities = capabilities,
+				filetypes = "python"
+			}
 			lspconfig.clangd.setup {}
 			lspconfig.jdtls.setup {}
 			lspconfig.rust_analyzer.setup {}
