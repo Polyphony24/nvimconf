@@ -2,14 +2,14 @@ return {
 	"folke/neodev.nvim",
 	config = function()
 		require('neodev').setup({
-			library = { plugins = { "nvim-dap-ui" }, types = true },
+			library = {
+				enabled = true,
+				runtime = true,
+				types = true,
+				plugins = true,
+				--plugins = { "nvim-dap-ui" },
+			},
+			lspconfig = true
 		})
 	end,
-	library = {
-		enabled = true,
-		runtime = true,
-		types = true,
-		plugins = true,
-	},
-	lspconfig = true
 }

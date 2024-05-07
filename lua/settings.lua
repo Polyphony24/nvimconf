@@ -5,23 +5,26 @@ local map = vim.keymap.set
 local opts = { silent = true }
 
 
+g.mapleader = " "
+g.maplocalleader = " "
+g.loaded_ruby_provider = 0
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
 o.number = true
 o.relativenumber = true
---o.signcolumn = "yes"
 o.cursorline = true
 o.autoindent = true
 o.wrap = true
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 4
+o.mouse = ''
+--o.signcolumn = "yes"
+--o.clipboard = "unnamedplus"
 opt.whichwrap:append("<,>,h,l,[,]")
 opt.termguicolors = true
 opt.scrolloff = 8
 --opt.colorcolumn = "80"
-o.tabstop = 4
-o.shiftwidth = 4
-o.softtabstop = 4
-o.clipboard = "unnamedplus"
-g.mapleader = " "
-g.maplocalleader = " "
-o.mouse = ''
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
