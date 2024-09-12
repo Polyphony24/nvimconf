@@ -18,7 +18,10 @@ return {
 
 				},
 				week_header = { enable = false },
-				shortcut = { { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' } },
+				shortcut = {
+					{ desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+					{ desc = 'config', group = 'number', action = 'e ~/.config/nvim/', key = 'n'}
+				},
 				packages = { enable = true },
 				footer = {}
 			},

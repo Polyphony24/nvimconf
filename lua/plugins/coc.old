@@ -1,7 +1,7 @@
 return {
 	'neoclide/coc.nvim',
 	branch = 'release',
-	lazy = false,
+	--lazy = false,
 	config = function()
 		--format
 		vim.keymap.set('n', '<leader>F',
@@ -17,5 +17,7 @@ return {
 		-- up
 		vim.keymap.set('i', '<C-k>', [[coc#pum#visible() ? coc#pum#prev(1) : '<C-k>']],
 			{ silent = true, noremap = true, expr = true, replace_keycodes = false })
+
+		vim.keymap.set("n", "gd", "<Plug>(coc-definition)", {silent = true})
 	end
 }
