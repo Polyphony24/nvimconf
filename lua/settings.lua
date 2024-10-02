@@ -8,7 +8,6 @@ local opts = { silent = true }
 g.mapleader = " "
 g.maplocalleader = " "
 g.loaded_ruby_provider = 0
-g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 o.number = true
 o.relativenumber = true
@@ -18,7 +17,7 @@ o.wrap = true
 o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = 4
-o.mouse = ''
+o.mouse = 'a'
 --o.signcolumn = "yes"
 --o.clipboard = "unnamedplus"
 opt.whichwrap:append("<,>,h,l,[,]")
@@ -35,6 +34,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- binds:
+map('n', 'h', ';')
 map('n', ';', 'l', opts)
 map('n', 'l', 'h', opts)
 map('n', '<C-w>;', '<C-w>l', opts)
