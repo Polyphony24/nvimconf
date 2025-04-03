@@ -17,7 +17,7 @@ o.wrap = true
 o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = 4
-o.mouse = 'a'
+o.mouse = ''
 --o.signcolumn = "yes"
 --o.clipboard = "unnamedplus"
 opt.whichwrap:append("<,>,h,l,[,]")

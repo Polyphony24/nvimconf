@@ -11,10 +11,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"clangd",
 					"jdtls",
-					"ruff_lsp",
-					"pyright",
 					"rust_analyzer",
 					"taplo",
 					"gopls",
@@ -30,10 +27,10 @@ return {
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
-			lspconfig.ruff.setup({
+			--[[lspconfig.ruff.setup({
 				capabilities = capabilities,
 				filetypes = "python",
-			})
+			})]]--
 			lspconfig.clangd.setup({
 				on_attach = on_attach,
 				capabilities = cmp_nvim_lsp.default_capabilities(),
@@ -43,12 +40,21 @@ return {
 					"--enable-config",
 				},
 			})
+			--[[lspconfig.ccls.setup({
+				--capabilities = capabilities,
+				init_options = {
+					cache = {
+						directory = ".ccls-cache",
+					},
+				},
+			})]]
 			lspconfig.jdtls.setup({})
 			lspconfig.rust_analyzer.setup({})
 			lspconfig.taplo.setup({})
 			lspconfig.gopls.setup({})
 			lspconfig.ts_ls.setup({})
 			lspconfig.pylsp.setup({
+				--on_attach = custom_attach,
 				settings = {
 					pylsp = {
 						plugins = {
@@ -56,6 +62,33 @@ return {
 								ignore = { "W391" },
 								maxLineLength = 100,
 							},
+						},
+					},
+				},
+			})
+			lspconfig.texlab.setup({
+				settings = {
+					texlab = {
+						auxDirectory = ".",
+						bibtexFormatter = "texlab",
+						build = {
+							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+							executable = "latexmk",
+							forwardSearchAfter = false,
+							onSave = false,
+						},
+						chktex = {
+							onEdit = false,
+							onOpenAndSave = false,
+						},
+						diagnosticsDelay = 300,
+						formatterLineLength = 80,
+						forwardSearch = {
+							args = {},
+						},
+						latexFormatter = "latexindent",
+						latexindent = {
+							modifyLineBreaks = false,
 						},
 					},
 				},
